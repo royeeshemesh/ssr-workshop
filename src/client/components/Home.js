@@ -7,7 +7,9 @@ class Home extends Component {
 
     this.fetchData = this.fetchData.bind(this);
 
-    this.state = {};
+    this.state = {
+      users: props.users
+    };
   }
 
   async fetchData() {
