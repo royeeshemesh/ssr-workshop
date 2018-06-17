@@ -1,10 +1,9 @@
-const path = require('path');
 const express = require('express');
 
 const app = express();
 
 // set public folder as express static assets
-app.use(express.static(path.resolve(__dirname, '../public')));
+app.use(express.static('public'));
 
 // listen to root request
 app.get('/', (req, res) => {
