@@ -9,6 +9,7 @@ module.exports = {
         path: path.resolve(__dirname, 'public')
     },
 
+    devtool: 'inline-sourcemap',
     module: {
         rules: [
             {
