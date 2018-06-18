@@ -11,8 +11,8 @@
     "node": ">=8.0.0 <9.0.0"
   },
   "scripts": {
-    "dev:server": "nodemon ./src/server.js --watch ./src/server.js",
-    "dev:build:client": "webpack --config webpack.client.js --watch"
+    "server": "nodemon ./src/server.js --watch ./src/server.js",
+    "build:client": "webpack --config webpack.client.js --watch"
   },
   "devDependencies": {
     "babel-core": "6.26.0",
