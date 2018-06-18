@@ -5,10 +5,12 @@ class Home extends Component {
   constructor(props) {
     super(props);
 
+    this.fetchData = this.fetchData.bind(this);
+
     this.state = {};
   }
 
-  async componentDidMount() {
+  async fetchData() {
     const users = await axios({
       method: 'GET',
       url: 'https://jsonplaceholder.typicode.com/users'
@@ -39,6 +41,7 @@ class Home extends Component {
     return (
       <div>
         <h1>Welcome to SSR Workshop</h1>
+        <button onClick={this.fetchData}>Fetch Data</button>
         <table border="1">
           <thead>
           <tr>
