@@ -18,14 +18,7 @@ module.exports = {
         include: [
           path.resolve(__dirname, './src/client'),
         ],
-        exclude: '/node_modules/',
-        options: {
-          presets: [
-            'react',
-            'stage-0',
-            ['env', {targets: {browsers: ['last 2 versions']}}]
-          ]
-        }
+        exclude: '/node_modules/'
       }
     ]
   }
