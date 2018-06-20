@@ -10,3 +10,6 @@
 * `yarn run dev:server` to start and watch the Server 
 * `yarn run dev:build:client` to start and watch the Client 
 * [localhost:3000](http://localhost:3000) to see in action 
+
+### Overview Diagram 
+Visit [this link](https://drive.google.com/file/d/1_WJJ8NNx8CJL7PsqTh9AlucBtbCdE3br/view?usp=sharing) to see a schema describing standard single page application flow vs SSR
