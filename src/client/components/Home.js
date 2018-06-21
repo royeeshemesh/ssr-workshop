@@ -1,35 +1,27 @@
-import axios from 'axios';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchUsers } from '../actions';
 
 class Home extends Component {
   constructor(props) {
     super(props);
-
-    this.fetchData = this.fetchData.bind(this);
 
     this.state = {
       users: props.users
     };
   }
 
-  async fetchData() {
-    const users = await axios({
-      method: 'GET',
-      url: 'https://jsonplaceholder.typicode.com/users'
-    });
-
-    this.setState({
-      users: users.data
-    });
+  componentDidMount() {
+    this.props.fetchUsers();
   }
 
   render() {
     const getUsersRows = () => {
-      if (!this.state.users) {
+      if (!this.props.users) {
         return null;
       }
-      return this.state.users.map((user, index)=>{
+      return this.props.users.map((user, index)=>{
         return (
           <tr key={index}>
             <td>{user.id}</td>
@@ -45,7 +37,6 @@ class Home extends Component {
       <div>
         <Link to="/about">About</Link>
         <h1>Welcome to SSR Workshop</h1>
-        <button onClick={this.fetchData}>Fetch Data</button>
         <table border="1">
           <thead>
           <tr>
@@ -64,4 +55,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+    users: state.users
+  };
+}
+
+export default connect(mapStateToProps, {fetchUsers})(Home);
