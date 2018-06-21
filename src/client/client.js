@@ -1,15 +1,12 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './components/Home';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './Routes';
 
-const usersList = [
-  {
-    id: '1',
-    name: 'Royee Shemesh',
-    username: 'rshemesh',
-    email: 'royee_shemesh@intuit.com'
-  }
-];
-
-ReactDOM.hydrate(<Home users={usersList} />, document.getElementById('root'));
+// ReactDOM.hydrate(<Home users={usersList} />, document.getElementById('root'));
+ReactDOM.hydrate(
+  <BrowserRouter>
+    <Routes/>
+  </BrowserRouter>,
+  document.getElementById('root'));
