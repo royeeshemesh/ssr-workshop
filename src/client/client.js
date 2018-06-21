@@ -4,9 +4,18 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
 
-// ReactDOM.hydrate(<Home users={usersList} />, document.getElementById('root'));
+// redux boilerplate
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import reducers from './reducers';
+
+const store = createStore(reducers, {}, applyMiddleware(thunk));
+
 ReactDOM.hydrate(
-  <BrowserRouter>
-    <Routes/>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes/>
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root'));
