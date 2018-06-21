@@ -2,6 +2,7 @@
 
 ### Prerequisite
 * Node.js version `>=8.0.0 <9.0.0`
+  * You can use [nvm](https://github.com/creationix/nvm) to install multiple versions if Node.js
 * [Yarn](https://yarnpkg.com/lang/en/)
 * [React.js](https://reactjs.org/) knowledge
 
