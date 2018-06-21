@@ -2,7 +2,14 @@ import 'babel-polyfill';
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Home from './client/components/Home';
+
+const Sample =() => {
+  return (
+    <div>
+      <h1>This is sample</h1>
+    </div>
+  )
+};
 
 // create express app
 const app = express();
@@ -15,7 +22,7 @@ app.get('/', (req, res) => {
   res.send(`
 <html>
 <body>
-    <div id="root">${renderToString(<Home/>)}</div>
+    <div id="root">${renderToString(<Sample/>)}</div>
     <!--<script src="bundle.js"></script>-->
 </body>
 </html>    
