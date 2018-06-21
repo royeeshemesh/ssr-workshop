@@ -7,8 +7,8 @@ const app = express();
 app.use(express.static('public'));
 
 // listen to root request
-app.get('/', (req, res) => {
-  res.send(renderer());
+app.get('*', (req, res) => {
+  res.send(renderer(req));
 });
 
 // start server
