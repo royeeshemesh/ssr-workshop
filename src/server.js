@@ -1,6 +1,16 @@
 const express = require('express');
 
+// build and watch webpack server
+const webpack = require('webpack');
+const config = require('../webpack.server.js');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+
+// create express app
 const app = express();
+
+// attache webpack dev as middleware
+const compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler));
 
 // set public folder as express static assets
 app.use(express.static('public'));

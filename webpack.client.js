@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'none',
 
   entry: './src/client/client.js',
 
