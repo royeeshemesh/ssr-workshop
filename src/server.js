@@ -18,6 +18,6 @@ app.get('/', (req, res) => {
 });
 
 // start server
-app.listen(3000, () => {
-  console.info('SSR server is listening on port 3000');
+app.listen(5505, () => {
+  console.info('SSR server is listening on port 5505');
 });
