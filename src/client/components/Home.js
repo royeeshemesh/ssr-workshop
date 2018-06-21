@@ -38,7 +38,7 @@ class Home extends Component {
 
     return (
       <div>
-        <h1>Welcome to SSR Workshop - royee</h1>
+        <h1>Welcome to SSR Workshop</h1>
         <table border="1">
           <thead>
           <tr>

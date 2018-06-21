@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 
 // build and watch webpack server
 const webpack = require('webpack');

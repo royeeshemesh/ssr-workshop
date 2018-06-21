@@ -6,7 +6,7 @@
   },
   "scripts": {
     "start": "npm-run-all --parallel server client",
-    "server": "nodemon ./src/server.js",
+    "server": "nodemon ./node_modules/.bin/babel-node ./src/server.js",
     "client": "webpack --config webpack.client.js --watch",
     "stop": "ps -ef | grep \"[n]ode $PWD\" | awk '{print $2;}' | xargs kill -9 && echo \"Processes stopped.\""
   },
@@ -17,6 +17,7 @@
     "react-dom": "^16.4.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "6.26.0",
     "babel-loader": "7.1.2",
     "babel-polyfill": "^6.26.0",
