@@ -1,8 +1,5 @@
-import 'babel-polyfill';
 import express from 'express';
-import React from 'react';
-import {renderToString} from 'react-dom/server';
-import Home from './client/components/Home';
+import renderer from './helpers/renderer';
 
 const app = express();
 
@@ -11,24 +8,7 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('/', (req, res) => {
-
-  const usersList = [
-    {
-      id: '1',
-      name: 'Royee Shemesh',
-      username: 'rshemesh',
-      email: 'royee_shemesh@intuit.com'
-    }
-  ];
-
-  res.send(`
-<html>
-<body>
-    <div id="root">${renderToString(<Home users={usersList}/>)}</div>
-    <script src="bundle.js"></script>
-</body>
-</html>    
-    `);
+  res.send(renderer());
 });
 
 // start server
