@@ -7,6 +7,7 @@ import Routes from '../client/Routes';
 import { Provider } from 'react-redux';
 
 export default (req, store) => {
+  console.info(3, 'server call renderer helper');
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>

@@ -10,9 +10,11 @@ class Home extends Component {
     this.state = {
       users: props.users
     };
+    console.info(4, 'home component created');
   }
 
   componentDidMount() {
+    console.info(5, 'home component mounted');
     this.props.fetchUsers();
   }
 
@@ -21,6 +23,7 @@ class Home extends Component {
       if (!this.props.users) {
         return null;
       }
+      console.info(8, 'home render', this.props.users, 'fetched users');
       return this.props.users.map((user, index)=>{
         return (
           <tr key={index}>
