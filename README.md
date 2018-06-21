@@ -8,8 +8,8 @@
 
 ### Getting Started
 * `yarn` to fetch all dependencies. 
-* `yarn run dev:server` to start and watch the Server 
-* `yarn run dev:build:client` to start and watch the Client 
+* `yarn server / npm run server` to start and watch the Server 
+* `yarn build:client / npm run build:client` to start and watch the Client 
 * [localhost:3000](http://localhost:3000) to see in action 
 
 ### Overview Diagram 
