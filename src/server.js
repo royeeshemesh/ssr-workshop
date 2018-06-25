@@ -9,7 +9,6 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('*', (req, res) => {
-  console.info(1, 'server get request');
   const store = createStore();
 
   res.send(renderer(req, store));
