@@ -12,10 +12,6 @@ class Home extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.fetchUsers();
-  }
-
   render() {
     const getUsersRows = () => {
       if (!this.props.users) {
