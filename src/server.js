@@ -10,9 +10,10 @@ const app = express();
 app.use(express.static('public'));
 
 // listen to root request
-app.get('*', (req, res) => {
+app.get('*', async (req, res) => {
   const store = createStore();
-  matchRoutes(Routes, req.path).forEach(({route})=>route.fetchData && route.fetchData());
+  const promises = matchRoutes(Routes, req.path).map(({route})=>route.fetchData ? route.fetchData(store) : Promise.resolve(null));
+  await Promise.all(promises);
   res.send(renderer(req, store));
 });
 

@@ -61,8 +61,8 @@ function mapStateToProps(state) {
   };
 }
 
-function fetchData() {
-  console.info('fetch required data for Home component');
+function fetchData(store) {
+  return store.dispatch(fetchUsers());
 }
 
 export default {
