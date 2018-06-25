@@ -6,10 +6,6 @@ import { fetchUsers } from '../actions';
 class Home extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      users: props.users
-    };
   }
 
   componentDidMount() {
