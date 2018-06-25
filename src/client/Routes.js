@@ -4,8 +4,8 @@ import About from './components/About';
 
 export default [
   {
+    ...Home,
     path: '/',
-    component: Home,
     exact: true
   },
   {

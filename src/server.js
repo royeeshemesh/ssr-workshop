@@ -12,7 +12,7 @@ app.use(express.static('public'));
 // listen to root request
 app.get('*', (req, res) => {
   const store = createStore();
-  console.info(matchRoutes(Routes, req.path));
+  matchRoutes(Routes, req.path).forEach(({route})=>route.fetchData && route.fetchData());
   res.send(renderer(req, store));
 });
 

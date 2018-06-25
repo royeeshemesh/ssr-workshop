@@ -61,4 +61,11 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {fetchUsers})(Home);
+function fetchData() {
+  console.info('fetch required data for Home component');
+}
+
+export default {
+  component: connect(mapStateToProps, {fetchUsers})(Home),
+  fetchData
+}
