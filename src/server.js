@@ -8,7 +8,7 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('/', (req, res) => {
-  res.send(renderer(req));
+  res.send(renderer());
 });
 
 // start server
