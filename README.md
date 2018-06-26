@@ -27,4 +27,4 @@ Visit [this link](https://drive.google.com/file/d/1_WJJ8NNx8CJL7PsqTh9AlucBtbCdE
 
 ### Workshop storyline 
 This workshop is divided into small branches built one on top of each other where each branch represent the next part of the story.
-You can find the detailed files comparison between all the branches [here](https://royeeshemesh.github.io/ssr-workshop/){:target="_blank"}.
+You can find the detailed files comparison between all the branches [here](https://royeeshemesh.github.io/ssr-workshop/).
