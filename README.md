@@ -22,3 +22,9 @@
 
 ### Overview Diagram 
 Visit [this link](https://drive.google.com/file/d/1_WJJ8NNx8CJL7PsqTh9AlucBtbCdE3br/view?usp=sharing) to see a schema describing standard single page application flow vs SSR
+
+---
+
+### Workshop storyline 
+This workshop is divided into small branches built one on top of each other where each branch represent the next part of the story.
+You can find the detailed files comparison between all the branches [here](https://github.intuit.com/pages/rshemesh/ssr-workshop/).
