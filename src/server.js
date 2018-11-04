@@ -5,7 +5,7 @@ import { renderToString } from 'react-dom/server';
 const Sample =() => {
   return (
     <div>
-      <h1>This is sample</h1>
+      <h1>This is sample SSR</h1>
     </div>
   )
 };
@@ -17,7 +17,7 @@ const app = express();
 app.use(express.static('public'));
 
 // listen to root request
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.send(`
 <html>
 <body>
