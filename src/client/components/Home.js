@@ -1,14 +1,23 @@
 import axios from 'axios';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.fetchData = this.fetchData.bind(this);
+
+    this.state = {
+      users: props.users
+    };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.fetchData();
+  }
+
+  async fetchData() {
     const users = await axios({
       method: 'GET',
       url: 'https://jsonplaceholder.typicode.com/users'
@@ -38,6 +47,7 @@ class Home extends Component {
 
     return (
       <div>
+        <Link to="/about">About</Link>
         <h1>Welcome to SSR Workshop</h1>
         <table border="1">
           <thead>
