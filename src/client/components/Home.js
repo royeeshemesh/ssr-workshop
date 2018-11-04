@@ -13,6 +13,10 @@ class Home extends Component {
     };
   }
 
+  componentDidMount() {
+    this.fetchData();
+  }
+
   async fetchData() {
     const users = await axios({
       method: 'GET',
@@ -45,7 +49,6 @@ class Home extends Component {
       <div>
         <Link to="/about">About</Link>
         <h1>Welcome to SSR Workshop</h1>
-        <button onClick={this.fetchData}>Fetch Data</button>
         <table border="1">
           <thead>
           <tr>
