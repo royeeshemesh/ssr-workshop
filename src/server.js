@@ -1,5 +1,4 @@
 import express from 'express';
-import renderer from './helpers/renderer';
 
 const app = express();
 
@@ -8,7 +7,14 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('*', (req, res) => {
-  res.send(renderer(req));
+  res.send(`
+  <html>
+  <body>
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+  </body>
+  </html>
+`);
 });
 
 // start server
