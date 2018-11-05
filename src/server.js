@@ -1,7 +1,7 @@
 import express from 'express';
 import {renderToString} from "react-dom/server";
 import {matchRoutes, renderRoutes} from 'react-router-config';
-import { StaticRouter } from 'react-router-dom';
+import {StaticRouter} from 'react-router-dom';
 import React from 'react';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
@@ -16,10 +16,17 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('*', async (req, res) => {
+  // create Redux store with same reducer as client has
   const store = createStore(reducers, {}, applyMiddleware(thunk));
-  const promises = matchRoutes(Routes, req.path).map(({route})=>route.fetchData ? route.fetchData(store) : Promise.resolve(null));
-  await Promise.all(promises);
 
+  // find all matched routes according to request path
+  const matchedRoutes = matchRoutes(Routes, req.path).map(({route}) => route);
+  // call fetch data of each matched routes
+  const fetchDataPromises = matchedRoutes.map(matchedRoute => matchedRoute.fetchData ? matchedRoute.fetchData(store) : Promise.resolve(null));
+  // wait until all of the data requests finished
+  await Promise.all(fetchDataPromises);
+
+  // Redux store now has all requested data
   const content = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
@@ -35,6 +42,7 @@ app.get('*', async (req, res) => {
 <body>
     <div id="root">${content}</div>
     <script>
+      // send server Redux store to client to initiate the client store from same state
       window.INITIAL_STATE = ${JSON.stringify(store.getState())};
     </script>
     <script src="bundle.js"></script>

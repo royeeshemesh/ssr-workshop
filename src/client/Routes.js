@@ -4,12 +4,12 @@ import About from './components/About';
 
 export default [
   {
-    ...Home,
+    ...Home, // { component, fetchData }
     path: '/',
     exact: true
   },
   {
-    path: '/about',
-    component: About,
+    ...About, // { component }
+    path: '/about'
   }
 ];
