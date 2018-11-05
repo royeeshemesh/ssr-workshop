@@ -8,7 +8,6 @@ import thunk from 'redux-thunk';
 import Routes from './client/Routes';
 import reducers from './client/reducers';
 
-
 const app = express();
 
 // set public folder as express static assets
