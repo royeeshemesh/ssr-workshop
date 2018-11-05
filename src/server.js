@@ -15,6 +15,7 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('*', (req, res) => {
+  // create Redux store with same reducers as in the client store
   const store = createStore(reducers, {}, applyMiddleware(thunk));
 
   const content = renderToString(
