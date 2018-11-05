@@ -1,6 +1,13 @@
 import express from 'express';
-import renderer from './helpers/renderer';
-import createStore from './helpers/createStore';
+import {renderToString} from "react-dom/server";
+import {StaticRouter} from 'react-router-dom';
+import React from 'react';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import Routes from './client/Routes';
+import reducers from './client/reducers';
+
 
 const app = express();
 
@@ -9,9 +16,25 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('*', (req, res) => {
-  const store = createStore();
+  const store = createStore(reducers, {}, applyMiddleware(thunk));
 
-  res.send(renderer(req, store));
+  const content = renderToString(
+    <Provider store={store}>
+      <StaticRouter location={req.path} context={{}}>
+        <Routes/>
+      </StaticRouter>
+    </Provider>
+  );
+
+  res.send(`
+<html>
+<body>
+    <div id="root">${content}</div>
+    <script src="bundle.js"></script>
+</body>
+</html>
+`);
+
 });
 
 // start server
