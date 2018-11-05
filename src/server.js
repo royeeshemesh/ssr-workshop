@@ -16,7 +16,7 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('*', async (req, res) => {
-  // create Redux store with same reducer as client has
+  // create Redux store with same reducers as in the client store
   const store = createStore(reducers, {}, applyMiddleware(thunk));
 
   // find all matched routes according to request path
