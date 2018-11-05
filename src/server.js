@@ -2,14 +2,6 @@ import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 
-const Sample =() => {
-  return (
-    <div>
-      <h1>This is sample SSR</h1>
-    </div>
-  )
-};
-
 // create express app
 const app = express();
 
@@ -18,6 +10,15 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('*', (req, res) => {
+  const Sample =() => {
+    return (
+      <div>
+        <h1>This is sample SSR</h1>
+        <button onClick={()=>alert('button clicked')}>This is a button</button>
+      </div>
+    )
+  };
+
   res.send(`
 <html>
 <body>
