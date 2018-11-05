@@ -1,5 +1,9 @@
 import express from 'express';
-import renderer from './helpers/renderer';
+import React from 'react';
+import {renderToString} from "react-dom/server";
+import {StaticRouter} from 'react-router-dom';
+
+import Routes from './client/Routes';
 
 const app = express();
 
@@ -8,7 +12,20 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('*', (req, res) => {
-  res.send(renderer(req));
+  const content = renderToString(
+    <StaticRouter location={req.path} context={{}}>
+      <Routes/>
+    </StaticRouter>
+  );
+
+  res.send(`
+<html>
+<body>
+    <div id="root">${content}</div>
+    <script src="bundle.js"></script>
+</body>
+</html>
+`);
 });
 
 // start server
