@@ -29,7 +29,7 @@ app.get('*', async (req, res) => {
   await Promise.all(fetchDataPromises);
 
   // Redux store now has all requested data
-  const content = renderToString(
+  const renderedApp = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
         <div>
@@ -42,7 +42,7 @@ app.get('*', async (req, res) => {
   res.send(`
 <html>
 <body>
-    <div id="root">${content}</div>
+    <div id="root">${renderedApp}</div>
     <script>
       // send server Redux store to client to initiate the client store from same state
       window.INITIAL_STATE = ${JSON.stringify(store.getState())};
