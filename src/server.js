@@ -1,6 +1,6 @@
 import express from 'express';
 import {renderToString} from "react-dom/server";
-import {matchRoutes, renderRoutes} from 'react-router-config';
+import * as ReactRouterConfig from 'react-router-config';
 import {StaticRouter} from 'react-router-dom';
 import React from 'react';
 import {Provider} from 'react-redux';
@@ -20,10 +20,15 @@ app.get('*', async (req, res) => {
   const store = createStore(reducers, {}, applyMiddleware(thunk));
 
   // find all matched routes according to request path
-  const matchedRoutes = matchRoutes(Routes, req.path).map(({route}) => route);
+  const matchedRoutes = ReactRouterConfig.matchRoutes(Routes, req.path).map(({route}) => route);
 
   // call fetch data of each matched routes
-  const fetchDataPromises = matchedRoutes.map(matchedRoute => matchedRoute.fetchData ? matchedRoute.fetchData(store) : Promise.resolve(null));
+  const fetchDataPromises = matchedRoutes.map(matchedRoute => {
+    if (matchedRoute.fetchData) {
+      return matchedRoute.fetchData(store);
+    }
+    return Promise.resolve(null);
+  });
 
   // wait until all of the data requests finished
   await Promise.all(fetchDataPromises);
@@ -33,7 +38,7 @@ app.get('*', async (req, res) => {
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
         <div>
-          {renderRoutes(Routes)}
+          {ReactRouterConfig.renderRoutes(Routes)}
         </div>
       </StaticRouter>
     </Provider>

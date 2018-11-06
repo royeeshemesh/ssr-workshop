@@ -60,12 +60,11 @@ function mapStateToProps(state) {
     users: state.users
   };
 }
-
 function fetchData(store) {
   return store.dispatch(fetchUsers());
 }
-
 export default {
   component: connect(mapStateToProps, {fetchUsers})(Home),
   fetchData
 }
+
