@@ -18,7 +18,7 @@ app.get('*', (req, res) => {
   // create Redux store with same reducers as in the client store
   const store = createStore(reducers, {}, applyMiddleware(thunk));
 
-  const content = renderToString(
+  const renderedApp = renderToString(
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
         <Routes/>
@@ -29,7 +29,7 @@ app.get('*', (req, res) => {
   res.send(`
 <html>
 <body>
-    <div id="root">${content}</div>
+    <div id="root">${renderedApp}</div>
     <script src="bundle.js"></script>
 </body>
 </html>
