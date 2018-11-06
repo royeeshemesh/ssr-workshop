@@ -1,6 +1,6 @@
 import express from 'express';
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import ReactDomServer from 'react-dom/server';
 
 // create express app
 const app = express();
@@ -14,18 +14,20 @@ app.get('*', (req, res) => {
     return (
       <div>
         <h1>This is sample SSR</h1>
-        <button onClick={()=>alert('button clicked')}>This is a button</button>
+        <button onClick={()=>alert('clicked')}>Do</button>
       </div>
     )
   };
 
+  // this will give us a string!
+  const renderedSample = ReactDomServer.renderToString(<Sample/>);
+
   res.send(`
-<html>
-<body>
-    <div id="root">${renderToString(<Sample/>)}</div>
-    <!--<script src="bundle.js"></script>-->
-</body>
-</html>    
+  <html>
+  <body>
+    <div id="root">${renderedSample}</div>
+  </body>
+  </html>    
     `);
 });
 
