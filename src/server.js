@@ -21,8 +21,10 @@ app.get('*', async (req, res) => {
 
   // find all matched routes according to request path
   const matchedRoutes = matchRoutes(Routes, req.path).map(({route}) => route);
+
   // call fetch data of each matched routes
   const fetchDataPromises = matchedRoutes.map(matchedRoute => matchedRoute.fetchData ? matchedRoute.fetchData(store) : Promise.resolve(null));
+
   // wait until all of the data requests finished
   await Promise.all(fetchDataPromises);
 
