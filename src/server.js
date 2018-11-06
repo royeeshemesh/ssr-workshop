@@ -20,6 +20,7 @@ app.get('*', async (req, res) => {
   const store = createStore(reducers, {}, applyMiddleware(thunk));
 
   // find all matched routes according to request path
+  // destructure the "route" nested property
   const matchedRoutes = ReactRouterConfig.matchRoutes(Routes, req.path).map(({route}) => route);
 
   // call fetch data of each matched routes
@@ -49,7 +50,8 @@ app.get('*', async (req, res) => {
 <body>
     <div id="root">${renderedApp}</div>
     <script>
-      // send server Redux store to client to initiate the client store from same state
+      // send server Redux store to client to initiate the 
+      // client store from same state in the hydrate phase
       window.INITIAL_STATE = ${JSON.stringify(store.getState())};
     </script>
     <script src="bundle.js"></script>
