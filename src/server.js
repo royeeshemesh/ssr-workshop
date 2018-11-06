@@ -1,6 +1,6 @@
 import express from 'express';
 import React from 'react';
-import {renderToString} from "react-dom/server";
+import ReactDomServer from "react-dom/server";
 import {StaticRouter} from 'react-router-dom';
 
 import Routes from './client/Routes';
@@ -12,7 +12,7 @@ app.use(express.static('public'));
 
 // listen to root request
 app.get('*', (req, res) => {
-  const content = renderToString(
+  const renderedApp = ReactDomServer.renderToString(
     <StaticRouter location={req.path} context={{}}>
       <Routes/>
     </StaticRouter>
@@ -21,7 +21,7 @@ app.get('*', (req, res) => {
   res.send(`
 <html>
 <body>
-    <div id="root">${content}</div>
+    <div id="root">${renderedApp}</div>
     <script src="bundle.js"></script>
 </body>
 </html>
