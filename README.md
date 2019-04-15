@@ -21,7 +21,9 @@
 ---
 
 ### Overview Diagram 
-Visit [this link](https://drive.google.com/file/d/1_WJJ8NNx8CJL7PsqTh9AlucBtbCdE3br/view?usp=sharing) to see a schema describing standard single page application flow vs SSR
+The following diagram describes the normal loading flow of a Single-Page-App against Server-Side-Rendering with the latency in each:
+![GitHub Logo](https://github.com/royeeshemesh/ssr-workshop/raw/master/ssr-workshop-01.png)
+
 
 ---
 
