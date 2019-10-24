@@ -1,4 +1,4 @@
-# FrontEnd Summit 2018 SSR Workshop
+# SSR Workshop
 
 ### Prerequisite
 * Node.js version `>=8.0.0 <9.0.0`
